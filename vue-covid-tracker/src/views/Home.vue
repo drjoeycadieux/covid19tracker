@@ -19,6 +19,11 @@
       Fetching Data
     </div>
     <img :src="loadingImage" class="w-24 m-auto" alt="" />
+
+      <div class="pb-4">
+                    <h4 class="text-xs">Developed by Tyler Youschak &middot; <a class="text-blue-600" href="mailto:joey@tech-center.com">Contact Me</a> &middot; <a class="text-blue-600" href="https://forms.gle/hEDGzzanEvYDHVZe9">Found an issue?</a></h4>
+                </div>
+
   </main>
 </template>
 
