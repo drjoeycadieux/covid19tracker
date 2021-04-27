@@ -14,7 +14,7 @@
       Clear Country
     </button>
 
-    <div class="pb-4">
+    <div class="pb-4 text-center mb-5">
       <h4 class="text-xs">
         Developed by Joey Cadieux &middot;
         <a class="text-blue-600" href="mailto:joey@tech-center.com"
