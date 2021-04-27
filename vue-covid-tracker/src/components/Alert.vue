@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="mt-10 p-4 bg-red-600 rounded-lg shadow-md text-white text-left">
+    <h1 class="p-4 bg-red-600 rounded-lg shadow-md text-white text-left">
       Different alert levels are in force in Québec.
       <a
         href="https://www.quebec.ca/en/health/health-issues/a-z/2019-coronavirus/progressive-regional-alert-and-intervention-system/map-of-covid-19-alert-levels-by-region"
