@@ -3,87 +3,94 @@
     <DataTitle :text="title" :dataDate="dataDate" />
 
     <DataBoxes :stats="stats" />
-     
+
     <CountrySelect @get-country="getCountryData" :countries="countries" />
 
-    <button @click="clearCountryData" 
-     v-if="stats.Country"
-     class="bg-green-700 text-white rounded p-3 mt-10 focus:outline-none hover:bg-green-600">
+    <button
+      @click="clearCountryData"
+      v-if="stats.Country"
+      class="bg-green-700 text-white rounded p-3 mt-10 focus:outline-none hover:bg-green-600"
+    >
       Clear Country
     </button>
 
+    <div class="pb-4">
+      <h4 class="text-xs">
+        Developed by Joey Cadieux &middot;
+        <a class="text-blue-600" href="mailto:joey@tech-center.com"
+          >Contact Me</a
+        >
+        &middot;
+        <a class="text-blue-600" href="https://forms.gle/hEDGzzanEvYDHVZe9"
+          >Found an issue?</a
+        >
+      </h4>
+    </div>
   </main>
 
   <main class="flex flex-col align-center justify-center text-center" v-else>
-    <div class="text-gray-500 text-3xl mt-10 mb-6">
-      Fetching Data
-    </div>
+    <div class="text-gray-500 text-3xl mt-10 mb-6">Fetching Data</div>
     <img :src="loadingImage" class="w-24 m-auto" alt="" />
-
-      <div class="pb-4">
-                    <h4 class="text-xs">Developed by Tyler Youschak &middot; <a class="text-blue-600" href="mailto:joey@tech-center.com">Contact Me</a> &middot; <a class="text-blue-600" href="https://forms.gle/hEDGzzanEvYDHVZe9">Found an issue?</a></h4>
-                </div>
-
   </main>
 </template>
 
 <script>
-import DataTitle from '@/components/DataTitle'
-import DataBoxes from '@/components/DataBoxes'
-import CountrySelect from '@/components/CountrySelect'
+import DataTitle from "@/components/DataTitle";
+import DataBoxes from "@/components/DataBoxes";
+import CountrySelect from "@/components/CountrySelect";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     DataTitle,
     DataBoxes,
-    CountrySelect
+    CountrySelect,
   },
   data() {
     return {
       loading: true,
-      title: 'Global',
-      dataDate: '',
+      title: "Global",
+      dataDate: "",
       stats: {},
       countries: [],
-      loadingImage: require('../assets/hourglass.gif'),
-    }
+      loadingImage: require("../assets/hourglass.gif"),
+    };
   },
   methods: {
     async fetchCovidData() {
-      const res = await fetch('https://api.covid19api.com/summary')
-      const data = await res.json()
-      return data
+      const res = await fetch("https://api.covid19api.com/summary");
+      const data = await res.json();
+      return data;
     },
     getCountryData(country) {
-      this.stats = country
-      this.title = country.Country
+      this.stats = country;
+      this.title = country.Country;
     },
     async clearCountryData() {
-      this.loading = true
-      const data = await this.fetchCovidData()
-      this.title = 'Global'
-      this.stats = data.Global
-      this.loading = false
+      this.loading = true;
+      const data = await this.fetchCovidData();
+      this.title = "Global";
+      this.stats = data.Global;
+      this.loading = false;
     },
     getCountryData(country) {
-      this.stats = country
-      this.title = country.Country
+      this.stats = country;
+      this.title = country.Country;
     },
     async clearCountryData() {
-      this.loading = true
-      const data = await this.fetchCovidData()
-      this.title = 'Global'
-      this.stats = data.Global
-      this.loading = false 
-    }
+      this.loading = true;
+      const data = await this.fetchCovidData();
+      this.title = "Global";
+      this.stats = data.Global;
+      this.loading = false;
+    },
   },
   async created() {
-    const data = await this.fetchCovidData()
-    this.dataDate = data.Date
-    this.stats = data.Global
-    this.countries = data.Countries
-    this.loading = false
+    const data = await this.fetchCovidData();
+    this.dataDate = data.Date;
+    this.stats = data.Global;
+    this.countries = data.Countries;
+    this.loading = false;
   },
-}
+};
 </script>
